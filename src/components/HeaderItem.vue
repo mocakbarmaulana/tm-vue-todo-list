@@ -2,6 +2,7 @@
   <header :title="title">
     <h1>{{ title }}</h1>
     <ButtonItem
+      v-show="homePage"
       :class-name="`${toggleAddTodo ? 'btn-danger' : 'btn-success'}`"
       :onClick="onClick"
     >
@@ -29,6 +30,11 @@ export default {
   methods: {
     onClick() {
       this.$emit("toggle-add-todo");
+    },
+  },
+  computed: {
+    homePage() {
+      return this.$route.path === "/";
     },
   },
 };
